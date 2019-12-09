@@ -28,25 +28,29 @@ class Simulation:
         '''Creates the population (a list of Person objects) consisting of initial infected people, initial healthy non-vaccinated people, and 
         initial healthy vaccinated people. Adds them to the population list'''
 
-        for i in range(self.initial_infected):
+        for _ in range(self.initial_infected):
         	person = Person(False, virus)
         	self.population.append(person)
 
-        for i in range(self.initial_healthy):
+        for _ in range(self.initial_healthy):
             person = Person(False, None)
             self.population.append(person)
 
-        for i in range(self.initial_vaccinated):
+        for _ in range(self.initial_vaccinated):
             person = Person(True, None)
             self.population.append(person)
         	
     def print_population(self):
         '''Prints out every person in the population and their current attributes'''
-        #TODO: finish this method
+        pass
 
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
-        #TODO: finish this method
+        infected = []
+        for person in self.population:
+            if person.is_alive and person.infection:
+                infected.append(person)
+        return infected
 
 
     def simulation_should_continue(self):
@@ -55,7 +59,12 @@ class Simulation:
         If everyone in the population is vaccinated return False
         If there are no more infected people left and everyone is either vaccinated or dead return False
         In all other cases return True'''
-        #TODO: finish this method
+        if self.total_dead + self.total_vaccinated >= self.population_size:
+            should_continue = False
+        else:
+            should_continue = True
+        
+        return should_continue
         
 
     def run(self):
@@ -116,7 +125,7 @@ class Simulation:
             generate a random float between 0 and 1
             if the random float is less then the infected person's virus reproduction number then the random person is infected
             othersie the random person is vaccinated and one is added to the total vaccinated'''
-        #TODO: finish this method
+        pass
         
 
 
