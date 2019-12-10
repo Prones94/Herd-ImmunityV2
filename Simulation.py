@@ -125,8 +125,8 @@ class Simulation:
             for _ in range(10):
                 #TODO: get a random index for the population list
                 #TODO: using the random index get a random person from the population
-                random_person = random.choice(self.population)
                 #TODO: call interaction() with the current infected person and the random person
+                random_person = random.choice(self.population)
                 self.interaction(infected_person,random_person)
                 
 
@@ -141,11 +141,12 @@ class Simulation:
             othersie the random person is vaccinated and one is added to the total vaccinated'''
         if random_person == infected or random_person.is_alive == False or random_person.is_vaccinated == True:
             return
-        elif (random_person.is_vaccinated ==False):
+        elif random_person.is_vaccinated == False:
             chance_infected = random.uniform(0.0,1.0)
             if chance_infected < self.virus.reproduction_num:
                 infected.append(random_person)
-        pass
+            elif random_person.is_vaccinated == True:
+                self.total_vaccinated += 1
 
 
         
