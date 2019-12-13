@@ -14,6 +14,7 @@ class Simulation:
         self.initial_vaccinated = initial_vaccinated
 
         self.population = []
+        self.population_infected = []
 
         self.population_size = initial_infected + initial_healthy + initial_vaccinated
 
@@ -120,7 +121,7 @@ class Simulation:
     def time_step(self, infected):
         ''' For every infected person interact with a random person from the population 10 times'''
 
-        for infected_person in infected:
+        for infected_person in self.population_infected:
 
             for _ in range(10):
                 #TODO: get a random index for the population list

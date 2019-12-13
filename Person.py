@@ -20,12 +20,9 @@ class Person:
         Return True if they survived the infection and False if they did not. 
         '''
         mortality_number = random.uniform(0.0,1.0)
-        virus_rate = self.infection.mortality_num * 100
         
-        if mortality_number < virus_rate:
-            self.is_vaccinated = False
-            self.is_alive = False
-            self.infection = None
+        if mortality_number < self.infection.mortality_num:
+            self.is_alive = False 
             return False
         else:
             self.is_vaccinated = True
